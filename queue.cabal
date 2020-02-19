@@ -18,8 +18,6 @@ common simple
   default-language: Haskell2010
   ghc-options: -Wall
   build-depends: base
-               , primitive ^>= 0.7
-               , deepseq ^>= 1.4
 
 library
   import: simple
@@ -27,16 +25,14 @@ library
   exposed-modules:
     Queue
 
--- test-suite queue
---   import: simple
---   type: exitcode-stdio-1.0
---   hs-source-dirs: test/
---   main-is: Spec.hs
---   ghc-options: -Wno-orphans
---   build-depends: queue
---                , random ^>= 1.1
---                , hspec ^>= 2.7
---                , QuickCheck ^>= 2.13
+test-suite queue
+  import: simple
+  type: exitcode-stdio-1.0
+  hs-source-dirs: test/
+  main-is: Spec.hs
+  ghc-options: -Wno-orphans
+  build-depends: queue
+               , hedgehog ^>= 1.0
 
 --benchmark rlist-bench
 --  import: simple
